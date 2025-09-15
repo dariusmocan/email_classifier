@@ -28,7 +28,7 @@ easy_ham, hard_ham, spam = loader.load_emails("data/archive.zip")
 all_emails = easy_ham + hard_ham + spam
 labels = ['easy_ham'] * len(easy_ham) + ['hard_ham'] * len(hard_ham) + ['spam'] * len(spam)
 
-vectorizer = CountVectorizer(lowercase = True)
+vectorizer = CountVectorizer(lowercase = True, stop_words="english")
 X = vectorizer.fit_transform(all_emails)
 
 X_train, X_test, y_train, y_test = train_test_split(X,labels,test_size=0.2,random_state=42, stratify=labels)
